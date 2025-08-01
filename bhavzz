@@ -1,0 +1,111 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * The Student class represents a single student with a name, roll number, and grade.
+ */
+class Student {
+    // Properties of the Student
+    private String name;
+    private int rollNumber;
+    private String grade;
+
+    // Constructor to initialize a new Student object
+    public Student(String name, int rollNumber, String grade) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.grade = grade;
+    }
+
+    // Getter method for the student's name
+    public String getName() {
+        return name;
+    }
+
+    // Getter method for the student's roll number
+    public int getRollNumber() {
+        return rollNumber;
+    }
+
+    // Getter method for the student's grade
+    public String getGrade() {
+        return grade;
+    }
+
+    // Method to display the details of the student
+    @Override
+    public String toString() {
+        return "Roll Number: " + rollNumber + ", Name: " + name + ", Grade: " + grade;
+    }
+}
+
+/**
+ * The StudentManagement class contains the main logic for the application,
+ * including adding, viewing, and searching for students.
+ */
+C
+                case 2:
+                    // View all students
+                    System.out.println("\n--- List of All Students ---");
+                    if (studentList.isEmpty()) {
+                        System.out.println("No students in the system yet.");
+                    } else {
+                        for (Student s : studentList) {
+                            System.out.println(s);
+                        }
+                    }
+                    break;
+
+                case 3:
+                    // Search for a student
+                    System.out.print("Enter roll number to search: ");
+                    int searchRollNumber = scanner.nextInt();
+                    boolean found = false;
+                    for (Student s : studentList) {
+                        if (s.getRollNumber() == searchRollNumber) {
+                            System.out.println("Student Found: " + s);
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        System.out.println("Student with roll number " + searchRollNumber + " not found.");
+                    }
+                    break;
+
+                case 4:
+                    // Remove a student
+                    System.out.print("Enter roll number to remove: ");
+                    int removeRollNumber = scanner.nextInt();
+                    Student studentToRemove = null;
+                    for (Student s : studentList) {
+                        if (s.getRollNumber() == removeRollNumber) {
+                            studentToRemove = s;
+                            break;
+                        }
+                    }
+                    if (studentToRemove != null) {
+                        studentList.remove(studentToRemove);
+                        System.out.println("Student removed successfully.");
+                    } else {
+                        System.out.println("Student with roll number " + removeRollNumber + " not found.");
+                    }
+                    break;
+
+                case 5:
+                    // Exit the application
+                    System.out.println("Exiting application. Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please enter a number between 1 and 5.");
+                    break;
+            }
+        }
+
+        // Close the scanner to prevent resource leaks
+        scanner.close();
+    }
+}
+
+
